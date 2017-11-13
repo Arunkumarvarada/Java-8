@@ -3,7 +3,7 @@ package com.java4u.concurrency.arrayblockinqueue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class BlockingQueueExample {
+public class ArrayBlockingQueueExample {
 
 	public static void main(String[] args) throws InterruptedException {
 		BlockingQueue queue = new ArrayBlockingQueue(1024);

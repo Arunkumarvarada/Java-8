@@ -1,6 +1,6 @@
 package com.java4u.threads;
 
-import com.java4u.threads.util.ThreadUtil;
+import com.java4u.concurrency.util.ThreadUtil;
 
 public class CreationUsingRunnable implements Runnable {
 
