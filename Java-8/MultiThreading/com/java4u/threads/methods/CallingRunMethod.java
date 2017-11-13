@@ -1,6 +1,6 @@
 package com.java4u.threads.methods;
 
-import com.java4u.concurrency.util.ThreadUtil;
+import com.java4u.threadpool.util.ThreadUtil;
 
 public class CallingRunMethod extends Thread {
 

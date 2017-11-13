@@ -1,6 +1,6 @@
 package com.java4u.threads;
 
-import com.java4u.concurrency.util.ThreadUtil;
+import com.java4u.threadpool.util.ThreadUtil;
 
 public class CreationUsingThreadClass extends Thread{
 	
