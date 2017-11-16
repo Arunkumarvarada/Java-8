@@ -3,7 +3,7 @@ package com.java4u.executors.running;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.java4u.threadpool.util.LoopTaskA;
+import com.java4u.executors.common.LoopTaskA;
 
 public class UsingSingleThreadExecutor {
 

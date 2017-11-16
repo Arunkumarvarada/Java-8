@@ -1,6 +1,6 @@
 package com.java4u.multithreading.naming;
 
-import com.java4u.threadpool.util.LoopTaskB;
+import com.java4u.multithreading.util.LoopTaskB;
 
 public class NamingThreadFirstWay {
 

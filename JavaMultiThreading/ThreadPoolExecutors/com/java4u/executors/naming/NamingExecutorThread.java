@@ -3,8 +3,8 @@ package com.java4u.executors.naming;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.java4u.executors.common.NamedThreadFactory;
 import com.java4u.multithreading.util.LoopTaskC;
-import com.java4u.threadpool.util.NamedThreadFactory;
 
 public class NamingExecutorThread {
 

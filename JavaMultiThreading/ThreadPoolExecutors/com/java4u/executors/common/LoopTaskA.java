@@ -1,4 +1,4 @@
-package com.java4u.threadpool.util;
+package com.java4u.executors.common;
 
 public class LoopTaskA implements Runnable {
 
