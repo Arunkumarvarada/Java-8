@@ -15,6 +15,7 @@ public class LoopTaskA implements Runnable {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				break;
 			}
 		}
 		System.out.println("##### <TASK - " + id + "> DONE ##### ");
