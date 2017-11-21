@@ -1,21 +1,22 @@
-package com.java4u.multithreading.terminating;
+package com.java4u.executors.terminating;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import com.java4u.executors.common.CalculationTaskB;
 import com.java4u.executors.common.CalculationTaskC;
 import com.java4u.executors.common.FactorialTaskB;
-
+import com.java4u.executors.common.LoopTaskA;
 import com.java4u.executors.common.LoopTaskF;
 import com.java4u.executors.common.NamedThreadFactory;
-import com.java4u.multithreading.util.LoopTaskA;
+import com.java4u.executors.common.TaskResult;
 
 public class TerminatingAllExecutorTasks {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
 		String currentThreadName = Thread.currentThread().getName();
 		System.out.println("[" + currentThreadName + "] Main thread starts here");
 
@@ -29,16 +30,25 @@ public class TerminatingAllExecutorTasks {
 
 		executorService.submit(task1);
 		executorService.submit(task2);
-		executorService.submit(task3);
-		executorService.submit(task4);
-		executorService.submit(task5);
-		
+		Future<Long> t3future = executorService.submit(task3);
+		Future<Long> t4future = executorService.submit(task4);
+		Future<TaskResult<String, Integer>> t5future = executorService.submit(task5);
+
 		TimeUnit.MILLISECONDS.sleep(2000);
 
 		executorService.shutdownNow();
 
-		System.out.println("[" + currentThreadName + "] All threads are Terminated ="+ executorService.awaitTermination(500, TimeUnit.MILLISECONDS));
-		
+		System.out.println("[" + currentThreadName + "] 'FactorialTaskB-1' Result = " + t3future.get());
+		System.out.println("[" + currentThreadName + "] 'CalculationTaskC-1' Result = " + t4future.get());
+		try {
+			System.out.println("[" + currentThreadName + "] 'CalculationTaskB-1' Result = " + t5future.get());
+		} catch (ExecutionException ee) {
+			System.out.println("[" + currentThreadName + "] 'CalculationTaskC-1' Result = Got Exception");
+			ee.getCause().printStackTrace();
+		}
+		System.out.println("[" + currentThreadName + "] All threads are Terminated ="
+				+ executorService.awaitTermination(5000, TimeUnit.MILLISECONDS));
+
 		System.out.println("[" + currentThreadName + "] Main thread ends here");
 	}
 
