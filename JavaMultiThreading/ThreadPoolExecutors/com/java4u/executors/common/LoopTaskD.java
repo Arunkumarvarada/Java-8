@@ -1,4 +1,4 @@
-package com.java4u.multithreading.util;
+package com.java4u.executors.common;
 
 public class LoopTaskD implements Runnable {
 

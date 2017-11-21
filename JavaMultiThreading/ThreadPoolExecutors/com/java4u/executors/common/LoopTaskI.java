@@ -1,11 +1,13 @@
-package com.java4u.multithreading.util;
+package com.java4u.executors.common;
 
-public class LoopTaskD implements Runnable {
+import java.util.concurrent.CountDownLatch;
+
+public class LoopTaskI implements Runnable {
 
 	private static int count = 0;
 	private int id;
 	private String taskId;
-	private long sleepTime;
+	private CountDownLatch latch;
 
 	@Override
 	public void run() {
@@ -20,18 +22,23 @@ public class LoopTaskD implements Runnable {
 			try {
 				Thread.sleep((long) (Math.random() * 1000));
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		System.out.println("##### [" + currentThreadName + "," + threadType + "] < " + taskId + "> DONE ##### ");
 
+		if (latch != null) {
+			latch.countDown();
+			System.out.println("[\" + currentThreadName + \",\" + threadType + \"] < \" + taskId + \"> LATCH COUNT "
+					+ latch.getCount());
+		}
+
 	}
 
-	public LoopTaskD(long sleepTime) {
-		this.sleepTime= sleepTime;
+	public LoopTaskI(CountDownLatch latch) {
+		this.latch = latch;
 		this.id = ++count;
-		this.taskId = "LoopTaskD" + id;
+		this.taskId = "LoopTaskI" + id;
 
 	}
 
