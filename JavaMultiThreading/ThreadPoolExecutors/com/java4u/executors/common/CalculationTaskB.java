@@ -2,7 +2,7 @@ package com.java4u.executors.common;
 
 import java.util.concurrent.Callable;
 
-import com.java4u.threadpool.util.ThreadUtil;
+import com.java4u.executors.util.ThreadUtil;
 
 public class CalculationTaskB implements Callable<TaskResult<String, Integer>> {
 	private int a;

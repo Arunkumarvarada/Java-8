@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 import com.java4u.executors.common.LoopTaskC;
 import com.java4u.executors.common.NamedThreadFactory;
-import com.java4u.threadpool.util.ThreadUtil;
+import com.java4u.executors.util.ThreadUtil;
 
 public class NamingCachedThreadPool {
 

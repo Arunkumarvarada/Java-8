@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import com.java4u.concurrency.common.Consumer;
 import com.java4u.concurrency.common.Producer;
-import com.java4u.threadpool.util.ThreadUtil;
+import com.java4u.concurrency.util.ThreadUtil;
 
 public class LinkedBlockingQueueBoundedDemo {
 

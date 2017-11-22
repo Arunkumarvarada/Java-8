@@ -3,7 +3,7 @@ package com.java4u.concurrency.countdownlatch;
 import java.util.concurrent.CountDownLatch;
 
 import com.java4u.concurrency.common.CountDownService;
-import com.java4u.threadpool.util.ThreadUtil;
+import com.java4u.concurrency.util.ThreadUtil;
 
 public class CountDownLatchDemo {
 
