@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import com.java4u.multithreading.util.ScheduleTaskA;
 import com.java4u.multithreading.util.TimeUtils;
 
-public class SchedulingTasksForOneTimeExecution {
+public class SchedulingTasksForFixedRateRepeatedExecutions {
 
 	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss:SSS");
 	

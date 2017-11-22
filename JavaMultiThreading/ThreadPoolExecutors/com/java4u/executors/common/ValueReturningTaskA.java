@@ -1,6 +1,6 @@
 package com.java4u.executors.common;
 
-import com.java4u.threadpool.util.ThreadUtil;
+import com.java4u.executors.util.ThreadUtil;
 
 public class ValueReturningTaskA implements Runnable {
 	private int a;

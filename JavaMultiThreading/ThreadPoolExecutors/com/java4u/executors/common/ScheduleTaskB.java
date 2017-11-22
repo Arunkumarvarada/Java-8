@@ -2,7 +2,6 @@ package com.java4u.executors.common;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimerTask;
 
 import com.java4u.executors.util.ThreadUtil;
 

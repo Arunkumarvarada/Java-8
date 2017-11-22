@@ -1,7 +1,7 @@
 package com.java4u.executors.common;
 
+import com.java4u.executors.util.ThreadUtil;
 import com.java4u.multithreading.common.ResultListener;
-import com.java4u.threadpool.util.ThreadUtil;
 
 public class ValueReturningTaskB implements Runnable {
 	private int a;
