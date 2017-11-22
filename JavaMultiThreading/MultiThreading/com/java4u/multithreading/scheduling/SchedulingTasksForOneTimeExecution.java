@@ -8,9 +8,10 @@ import java.util.concurrent.TimeUnit;
 import com.java4u.multithreading.util.ScheduleTaskA;
 import com.java4u.multithreading.util.TimeUtils;
 
-public class SchedulingTaskForFixedDealyRepeatedExecutions {
-	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss:SSS");
+public class SchedulingTasksForOneTimeExecution {
 
+	private static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss:SSS");
+	
 	public static void main(String[] args) throws InterruptedException {
 		String currentThreadName = Thread.currentThread().getName();
 		System.out.println("[" + currentThreadName + "] Main thread starts here...");
@@ -22,7 +23,7 @@ public class SchedulingTaskForFixedDealyRepeatedExecutions {
 		Date scheduledTime = TimeUtils.getFutureTime(currentTime, 3000);
 		long intervalMillis = 2000;
 
-		timer.schedule(new ScheduleTaskA(1000), scheduledTime, intervalMillis);
+		timer.scheduleAtFixedRate(new ScheduleTaskA(1000), scheduledTime, intervalMillis);
 
 		System.out.println(
 				"[" + currentThreadName + "] Task-1 first scheduled for  : " + dateFormatter.format(scheduledTime)
@@ -35,7 +36,7 @@ public class SchedulingTaskForFixedDealyRepeatedExecutions {
 		long delayMillis= 4000;
 		long intervalMillis2= 2000;
 		
-		timer.schedule(new ScheduleTaskA(1000), delayMillis, intervalMillis2);
+		timer.scheduleAtFixedRate(new ScheduleTaskA(1000), delayMillis, intervalMillis2);
 		
 		System.out.println(
 				"[" + currentThreadName + "] Task-2 first scheduled for  : " + dateFormatter.format(scheduledTime)
