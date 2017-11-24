@@ -22,13 +22,13 @@ public class WeatherStation implements Subject {
 
 	@Override
 	public void removeObserver(Observer observer) {
-		this.observers.remove(observer);
+		this.observers.remove(observers.indexOf(observer));
 
 	}
 
 	@Override
 	public void notifyAllObservers() {
-		for(Observer observer: observers) {
+		for (Observer observer : observers) {
 			observer.update(pressure, temperature, humidity);
 		}
 	}
