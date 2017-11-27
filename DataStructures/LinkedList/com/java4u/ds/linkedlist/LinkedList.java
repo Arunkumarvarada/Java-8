@@ -1,30 +1,30 @@
 package com.java4u.ds.linkedlist;
 
 public class LinkedList {
-	private Node headNode = null;
+	private Node head = null;
 	private int size = 0;
 
 	public LinkedList(Node head) {
-		this.headNode = head;
+		this.head = head;
 	}
 
 	public boolean isEmpty() {
-		if (headNode == null) {
+		if (head == null) {
 			return true;
 		}
 		return false;
 	}
 
 	protected Node gethead() {
-		return headNode;
+		return head;
 	}
 
 	public int getSize() {
 		int count = 0;
-		if (headNode == null) {
+		if (head == null) {
 			return 0;
 		}
-		Node currentNode = headNode;
+		Node currentNode = head;
 		while (currentNode != null) {
 			count++;
 			currentNode = currentNode.getNext();
@@ -33,7 +33,7 @@ public class LinkedList {
 	}
 
 	public void travese() {
-		Node currentNode = headNode;
+		Node currentNode = head;
 		while (currentNode != null) {
 			System.out.print(currentNode.getData() + "-->");
 			currentNode = currentNode.getNext();
@@ -42,13 +42,13 @@ public class LinkedList {
 
 	public void reverseRecursive() {
 		Node prev = null;
-		reverseRec(prev, headNode);
+		reverseRec(prev, head);
 
 	}
 
 	private void reverseRec(Node prev, Node current) {
 		if (null == current) {
-			headNode = prev;
+			head = prev;
 			return;
 		}
 		Node temp = current.getNext();
@@ -57,7 +57,7 @@ public class LinkedList {
 	}
 
 	public void printReverse() {
-		printRev(headNode);
+		printRev(head);
 	}
 
 	private void printRev(Node current) {
@@ -70,21 +70,21 @@ public class LinkedList {
 
 	public void reverse() {
 		Node prev = null;
-		Node current = headNode;
+		Node current = head;
 		while (current != null) {
 			Node temp = current.getNext();
 			prev = current;
 			current = temp;
 		}
-		headNode = prev;
+		head = prev;
 	}
 
 	public Node getMiddle() {
-		if (headNode == null) {
-			return headNode;
+		if (head == null) {
+			return head;
 		}
 		Node slow, fast;
-		slow = fast = headNode;
+		slow = fast = head;
 		while (fast != null && slow != null) {
 			slow = slow.getNext();
 			fast = fast.getNext().getNext();
@@ -94,10 +94,10 @@ public class LinkedList {
 
 	public void insert(int data) {
 		Node newNode = new Node(data);
-		if (null == headNode) {
-			headNode = newNode;
+		if (null == head) {
+			head = newNode;
 		} else {
-			Node temp = headNode;
+			Node temp = head;
 			while (temp != null) {
 				temp = temp.getNext();
 			}
@@ -108,22 +108,22 @@ public class LinkedList {
 
 	public void insertBefore(int data) {
 		Node newNode = new Node(data);
-		if (null == headNode) {
-			newNode = headNode;
+		if (null == head) {
+			newNode = head;
 		} else {
-			newNode.setNext(headNode);
-			headNode = newNode;
+			newNode.setNext(head);
+			head = newNode;
 		}
 		size++;
 	}
 
 	public Node insertNode(int data) {
 		Node newNode = new Node(data);
-		if (headNode == null) {
-			headNode = newNode;
-			return headNode;
+		if (head == null) {
+			head = newNode;
+			return head;
 		} else {
-			Node temp = headNode;
+			Node temp = head;
 			while (null != temp) {
 				temp = temp.getNext();
 			}
@@ -133,19 +133,46 @@ public class LinkedList {
 		return newNode;
 	}
 
+	public void insert(int position, int data) {
+		if (position < 0) {
+			position = 0;
+		}
+		if (position > size) {
+			position = size;
+		}
+		if (head == null) {
+			head = new Node(data);
+		}
+		if(position==0) {
+			Node current= new Node(data);
+			current.setNext(head);
+			head= current;
+		}
+		else {
+			Node temp= head;
+			for(int i=1; i<position;i++) {
+				temp= temp.getNext();
+			}
+			Node newNode= new Node(data);
+			newNode.setNext(temp.getNext());
+			temp.setNext(newNode);
+		}
+		size++;
+	}
+
 	public void delete(int data) {
-		if (headNode == null) {
+		if (head == null) {
 			System.out.println("No Elements are there in this list!!");
 			return;
 		}
-		if (headNode.getData() == data) {
-			Node temp = headNode;
-			headNode = headNode.getNext();
+		if (head.getData() == data) {
+			Node temp = head;
+			head = head.getNext();
 			temp = null;
 			size--;
 			return;
 		} else {
-			Node previous = headNode;
+			Node previous = head;
 			Node current = previous.getNext();
 			while (current != null) {
 				if (current.getData() == data) {
@@ -162,4 +189,5 @@ public class LinkedList {
 		}
 		size--;
 	}
+
 }
