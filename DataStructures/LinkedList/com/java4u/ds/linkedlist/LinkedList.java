@@ -143,17 +143,16 @@ public class LinkedList {
 		if (head == null) {
 			head = new Node(data);
 		}
-		if(position==0) {
-			Node current= new Node(data);
+		if (position == 0) {
+			Node current = new Node(data);
 			current.setNext(head);
-			head= current;
-		}
-		else {
-			Node temp= head;
-			for(int i=1; i<position;i++) {
-				temp= temp.getNext();
+			head = current;
+		} else {
+			Node temp = head;
+			for (int i = 1; i < position; i++) {
+				temp = temp.getNext();
 			}
-			Node newNode= new Node(data);
+			Node newNode = new Node(data);
 			newNode.setNext(temp.getNext());
 			temp.setNext(newNode);
 		}
@@ -190,4 +189,48 @@ public class LinkedList {
 		size--;
 	}
 
+	public void deleteAtBeginning() {
+		if (head == null) {
+			System.out.println("No Elements are there in this list !!");
+		}
+		Node temp = head;
+		head = head.getNext();
+		temp = null;
+		size--;
+	}
+
+	public void deleteAtEnd() {
+		if (head == null) {
+			System.out.println("No Elements are there in this list !!");
+		}
+		Node previous = head;
+		Node current = previous.getNext();
+		while (current != null) {
+			previous = current;
+			current = current.getNext();
+		}
+		previous.setNext(current.getNext());
+		current.setNext(null);
+	}
+
+	public void delete(int data, int position) {
+		if (position < 0) {
+			deleteAtBeginning();
+		}
+		if (position > size) {
+			deleteAtEnd();
+		}
+		if (head == null) {
+			System.out.println("No Elements are there in the list!!");
+		} else {
+			Node previous = head;
+			Node current = previous.getNext();
+			for (int i = 0; i < position; i++) {
+				previous = current;
+				current = current.getNext();
+			}
+			previous.setNext(current.getNext());
+			current.setNext(null);
+		}
+	}
 }
