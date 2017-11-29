@@ -8,6 +8,10 @@ public class LinkedList {
 		this.head = head;
 	}
 
+	public LinkedList() {
+
+	}
+
 	public boolean isEmpty() {
 		if (head == null) {
 			return true;
@@ -38,12 +42,12 @@ public class LinkedList {
 			System.out.print(currentNode.getData() + "-->");
 			currentNode = currentNode.getNext();
 		}
+		System.out.println();
 	}
 
 	public void reverseRecursive() {
 		Node prev = null;
 		reverseRec(prev, head);
-
 	}
 
 	private void reverseRec(Node prev, Node current) {
@@ -58,6 +62,7 @@ public class LinkedList {
 
 	public void printReverse() {
 		printRev(head);
+		System.out.println();
 	}
 
 	private void printRev(Node current) {
@@ -65,9 +70,10 @@ public class LinkedList {
 			return;
 		}
 		printRev(current.getNext());
-		System.out.print(" " + current.getData());
+		System.out.print(current.getData() + "-->");
 	}
 
+	// TODO: Need to be fixed
 	public void reverse() {
 		Node prev = null;
 		Node current = head;
@@ -79,6 +85,7 @@ public class LinkedList {
 		head = prev;
 	}
 
+	//TOTO:Need to be fixed
 	public Node getMiddle() {
 		if (head == null) {
 			return head;
@@ -92,24 +99,10 @@ public class LinkedList {
 		return slow;
 	}
 
-	public void insert(int data) {
-		Node newNode = new Node(data);
-		if (null == head) {
-			head = newNode;
-		} else {
-			Node temp = head;
-			while (temp != null) {
-				temp = temp.getNext();
-			}
-			temp.setNext(newNode);
-		}
-		size++;
-	}
-
 	public void insertBefore(int data) {
 		Node newNode = new Node(data);
 		if (null == head) {
-			newNode = head;
+			head = newNode;
 		} else {
 			newNode.setNext(head);
 			head = newNode;
@@ -117,14 +110,15 @@ public class LinkedList {
 		size++;
 	}
 
-	public Node insertNode(int data) {
+	public Node insertAtEnd(int data) {
+		Node temp = null;
 		Node newNode = new Node(data);
 		if (head == null) {
 			head = newNode;
 			return head;
 		} else {
-			Node temp = head;
-			while (null != temp) {
+			temp = head;
+			while (null != temp.getNext()) {
 				temp = temp.getNext();
 			}
 			temp.setNext(newNode);
@@ -183,7 +177,7 @@ public class LinkedList {
 				current = current.getNext();
 			}
 			if (current == null) {
-				System.out.println("No Specified Element found in the list!!");
+				System.out.println("No Specified Element found in the list :: " + data);
 			}
 		}
 		size--;
@@ -205,7 +199,7 @@ public class LinkedList {
 		}
 		Node previous = head;
 		Node current = previous.getNext();
-		while (current != null) {
+		while (current.getNext() != null) {
 			previous = current;
 			current = current.getNext();
 		}
@@ -213,6 +207,7 @@ public class LinkedList {
 		current.setNext(null);
 	}
 
+	// TODO: need to be fixed
 	public void delete(int data, int position) {
 		if (position < 0) {
 			deleteAtBeginning();
