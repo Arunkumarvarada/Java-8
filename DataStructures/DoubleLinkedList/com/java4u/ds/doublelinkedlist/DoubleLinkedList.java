@@ -3,16 +3,27 @@ package com.java4u.ds.doublelinkedlist;
 public class DoubleLinkedList {
 
 	private DLLNode head;
+	private DLLNode tail;
 	private int size = 0;
 
 	public int getSize() {
 		return size;
 	}
 
+	public boolean isEmpty() {
+		return (head == null) ? true : false;
+	}
+
+	//TODO: NTC
+	public void insert(int data, int position) {
+
+	}
+
 	public void insertAtBeginning(int data) {
 		DLLNode newNode = new DLLNode(data);
 		if (head == null) {
 			head = newNode;
+			tail = newNode;
 		} else {
 			newNode.setNext(head);
 			newNode.setPrevious(null);
@@ -39,6 +50,16 @@ public class DoubleLinkedList {
 		last.setNext(newNode);
 		newNode.setPrevious(last);
 		size++;
+	}
+
+	//TODO: NTC
+	public void insert(int data, DLLNode node) {
+		DLLNode newNode = new DLLNode(data);
+		if (isEmpty()) {
+			head = newNode;
+			newNode.setPrevious(null);
+		}
+
 	}
 
 	public void delete(int data) {
@@ -73,7 +94,7 @@ public class DoubleLinkedList {
 					size--;
 					return;
 				}
-				current= current.getNext();
+				current = current.getNext();
 			}
 			// if node is last node
 			if (data == current.getData()) {
@@ -82,6 +103,7 @@ public class DoubleLinkedList {
 				current.setNext(null);
 				current.setPrevious(null);
 				current = null;
+				tail = previous;
 				size--;
 				return;
 			} else {
@@ -89,6 +111,18 @@ public class DoubleLinkedList {
 			}
 
 		}
+	}
+
+	public void reverseTraverse() {
+		if (isEmpty()) {
+			return;
+		}
+		DLLNode current= tail;
+		while(current!=null) {
+			System.out.print(current.getData() + " --> ");
+			current= current.getPrevious();
+		}
+		System.out.println();
 	}
 
 	public void traverse() {

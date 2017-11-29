@@ -3,6 +3,7 @@ package com.java4u.ds.doublelinkedlist;
 public class DoubleLinkedListDemo {
 
 	public static void main(String[] args) {
+		
 		DoubleLinkedList list = new DoubleLinkedList();
 		list.insertAtBeginning(1);
 		list.insertAtBeginning(22);
@@ -20,6 +21,7 @@ public class DoubleLinkedListDemo {
 		list.delete(24);
 		list.traverse();
 		System.out.println("Size of the List is :: " + list.getSize());
+		list.reverseTraverse();
 	}
 
 }
