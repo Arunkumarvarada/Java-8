@@ -1,4 +1,4 @@
-package com.java4u.ds.stack;
+package com.java4u.ds.stack.array;
 
 public class StackUsingArray {
 

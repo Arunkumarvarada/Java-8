@@ -5,4 +5,4 @@
  * @author varadago
  *
  */
-package com.java4u.ds.stack;
+package com.java4u.ds.stack.array;
