@@ -13,10 +13,7 @@ public class LinkedList {
 	}
 
 	public boolean isEmpty() {
-		if (head == null) {
-			return true;
-		}
-		return false;
+		return (head == null) ? true : false;
 	}
 
 	protected Node gethead() {
@@ -85,7 +82,7 @@ public class LinkedList {
 		head = prev;
 	}
 
-	//TOTO:Need to be fixed
+	// TOTO:Need to be fixed
 	public Node getMiddle() {
 		if (head == null) {
 			return head;
