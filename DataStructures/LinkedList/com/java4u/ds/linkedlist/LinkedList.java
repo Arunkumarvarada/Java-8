@@ -249,4 +249,23 @@ public class LinkedList {
 		}
 		return size;
 	}
+
+	public Node insertWithReturn(int data) {
+		Node newNode = new Node(data);
+		if(null == head) {
+			head = newNode;
+			return head;
+			
+		}
+		else {
+			Node temp = head;
+			while(temp.getNext() != null) {
+				temp = temp.getNext();
+			}
+			
+			temp.setNext( newNode);
+			return newNode;
+		}
+		
+	}
 }
