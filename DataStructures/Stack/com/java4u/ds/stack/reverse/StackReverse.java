@@ -21,7 +21,6 @@ public class StackReverse {
 		}
 	}
 
-
 	public Stack usingAuxilaryStack() {
 		if (stack.isEmpty()) {
 			return null;
