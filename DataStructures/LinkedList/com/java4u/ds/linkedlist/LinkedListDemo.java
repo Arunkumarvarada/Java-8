@@ -6,14 +6,17 @@ public class LinkedListDemo {
 		LinkedList list = new LinkedList();
 
 		System.out.println("Is List is Empty :: " + list.isEmpty());
-		list.delete(22);
+		list.deleteData(22);
 
 		// Add the elements into list
 
-		list.insertBefore(22);
-		list.insertBefore(33);
-		list.insertBefore(44);
-		list.insertAtEnd(34);
+		list.insertAtBeginning(22);
+		list.insertAtBeginning(33);
+		list.insertAtBeginning(44);
+		list.insertAtBeginning(34);
+		list.insertAtBeginning(45);
+		Node node= list.getMiddle();
+		System.out.println("Node data: "+ node.getData());
 		list.travese();
 		list.reverseRecursive();
 		list.travese();
@@ -26,16 +29,19 @@ public class LinkedListDemo {
 		list.deleteAtEnd();
 		list.travese();
 		//list.delete(6, 34);
-		list.delete(34);
-		list.delete(22);
-		list.delete(44);
-		list.delete(13);
+		list.deleteData(34);
+		list.deleteData(22);
+		list.deleteData(44);
+		list.deleteData(13);
 		list.travese();
 		list.printReverse();
 		list.reverseRecursive();
 		list.travese();
+		list.deleteBasedOnPosition(3);
+		list.deleteBasedOnPosition(1);
+		list.travese();
 		System.out.println("The Size of Linked List is :: "+ list.getSize());
-		Node node= list.getMiddle();
+		node= list.getMiddle();
 		System.out.println("Node data: "+ node.getData());
 
 	}

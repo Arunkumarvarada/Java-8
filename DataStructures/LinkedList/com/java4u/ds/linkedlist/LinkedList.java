@@ -82,21 +82,23 @@ public class LinkedList {
 		head = prev;
 	}
 
-	// TOTO:Need to be fixed
 	public Node getMiddle() {
 		if (head == null) {
 			return head;
 		}
+		if (head.getNext() == null) {
+			return head;
+		}
 		Node slow, fast;
 		slow = fast = head;
-		while (fast != null && slow != null) {
+		while (fast != null && fast.getNext() != null) {
 			slow = slow.getNext();
 			fast = fast.getNext().getNext();
 		}
 		return slow;
 	}
 
-	public void insertBefore(int data) {
+	public void insertAtBeginning(int data) {
 		Node newNode = new Node(data);
 		if (null == head) {
 			head = newNode;
@@ -150,7 +152,7 @@ public class LinkedList {
 		size++;
 	}
 
-	public void delete(int data) {
+	public void deleteData(int data) {
 		if (head == null) {
 			System.out.println("No Elements are there in this list!!");
 			return;
@@ -193,36 +195,58 @@ public class LinkedList {
 	public void deleteAtEnd() {
 		if (head == null) {
 			System.out.println("No Elements are there in this list !!");
-		}
-		Node previous = head;
-		Node current = previous.getNext();
-		while (current.getNext() != null) {
-			previous = current;
-			current = current.getNext();
-		}
-		previous.setNext(current.getNext());
-		current.setNext(null);
-	}
-
-	// TODO: need to be fixed
-	public void delete(int data, int position) {
-		if (position < 0) {
-			deleteAtBeginning();
-		}
-		if (position > size) {
-			deleteAtEnd();
-		}
-		if (head == null) {
-			System.out.println("No Elements are there in the list!!");
+			return;
 		} else {
 			Node previous = head;
 			Node current = previous.getNext();
-			for (int i = 0; i < position; i++) {
+			while (current.getNext() != null) {
 				previous = current;
 				current = current.getNext();
 			}
 			previous.setNext(current.getNext());
 			current.setNext(null);
 		}
+		size--;
+	}
+
+	public void deleteBasedOnPosition(int position) {
+		if (position < 0) {
+			position = 0;
+		}
+		getLenth();
+		if (position >= size) {
+			position = size - 1;
+		}
+
+		if (head == null) {
+			return;
+		}
+		if (position == 0) {
+			Node temp = head;
+			head = head.getNext();
+			temp = null;
+		} else {
+			Node temp = head;
+			for (int i = 1; i < position; i++) {
+				temp = temp.getNext();
+			}
+			temp.setNext(temp.getNext().getNext());
+		}
+		size--;
+	}
+
+	public int getLenth() {
+		int count = 0;
+		if (head == null) {
+			return 0;
+		} else {
+			Node current = head;
+			while (current != null) {
+				++count;
+				current = current.getNext();
+			}
+			size = count;
+		}
+		return size;
 	}
 }
