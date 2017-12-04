@@ -1,6 +1,7 @@
 package com.java4u.btree;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class BinaryTree {
 	private BTreeNode root = null;
@@ -57,12 +58,10 @@ public class BinaryTree {
 		if (found == true) {
 			return true;
 		}
-
 		return isPresent(root.getRight(), data);
-
 	}
 
-	public void levelOrderTrversal() {
+	public void levelOrderTraversal() {
 		BTreeNode temp = root;
 
 		if (null == temp) {
@@ -83,61 +82,129 @@ public class BinaryTree {
 		}
 	}
 
-	public void preOrderTrversal() {
+	public void preOrderTraversal() {
 		preOrderTraversal(root);
+		System.out.println();
 	}
 
 	private void preOrderTraversal(BTreeNode root) {
 		if (root == null) {
 			return;
 		} else {
-			System.out.println(root.getData());
+			System.out.print(" " + root.getData());
 			preOrderTraversal(root.getLeft());
 			preOrderTraversal(root.getRight());
 		}
 	}
 
-	public void postOrderTrversal() {
+	public void postOrderTraversal() {
 		postOrderTraversal(root);
+		System.out.println();
 	}
 
 	private void postOrderTraversal(BTreeNode root) {
-		if(root==null) {
+		if (root == null) {
 			return;
-		}
-		else {
+		} else {
 			postOrderTraversal(root.getLeft());
 			postOrderTraversal(root.getRight());
-			System.out.println(root.getData());
+			System.out.print(" " + root.getData());
 		}
-		
+
 	}
-	
-	public void inOrderTrversal() {
+
+	public void inOrderTraversal() {
 		inOrderTrversal(root);
+		System.out.println();
 	}
 
 	private void inOrderTrversal(BTreeNode root) {
-		if(root==null) {
+		if (root == null) {
 			return;
-		}
-		else {
+		} else {
 			postOrderTraversal(root.getLeft());
-			System.out.println(root.getData());
+			System.out.print(" " + root.getData());
 			postOrderTraversal(root.getRight());
 		}
-		
-	}
-
-	public void levelOrderTrversalIterative() {
 
 	}
 
-	public void preOrderTrversalIterative() {
+	public void inOrderTraversalIterative() {
+		inOrderTrversalIterative(root);
+		System.out.println();
+	}
+
+	private void inOrderTrversalIterative(BTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		Stack<BTreeNode> stack = new Stack<BTreeNode>();
+		while (true) {
+			if (root != null) {
+				stack.push(root);
+				root = root.getLeft();
+			}
+			if (stack.isEmpty()) {
+				break;
+			}
+			root = stack.pop();
+			System.out.println(root.getData());
+			root = root.getRight();
+		}
 
 	}
 
-	public void postOrderTrversalIterative() {
+	public void preOrderTraversalIterative() {
+		preOrderTrversalIterative(root);
+		System.out.println();
+	}
+
+	private void preOrderTrversalIterative(BTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		Stack<BTreeNode> stack = new Stack<>();
+		while (!stack.isEmpty()) {
+			if (root != null) {
+				System.out.print(" " + root.getData());
+				root = root.getLeft();
+				if (root != null) {
+					stack.push(root);
+				}
+			} else {
+				root = stack.pop();
+				root = root.getRight();
+				if (root != null) {
+					stack.push(root);
+				}
+			}
+		}
+	}
+
+	public void postOrderTraversalIterative() {
+		postOrderTrversalIterative(root);
+		System.out.println();
+	}
+
+	private void postOrderTrversalIterative(BTreeNode root) {
+		if (root == null) {
+			return;
+		}
+		Stack<BTreeNode> stack = new Stack<BTreeNode>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			if (root != null) {
+				root = root.getLeft();
+				if (root != null) {
+					stack.push(root);
+				}
+			} else {
+				root = stack.pop();
+				stack.push(root);
+				root = root.getRight();
+				System.out.print(" " + root.getData());
+			}
+		}
 
 	}
 
