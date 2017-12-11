@@ -208,10 +208,6 @@ public class BinaryTree {
 
 	}
 
-	public int sumOfAllElements() {
-		return diameter;
-	}
-
 	public boolean isEmpty() {
 		return (root == null);
 	}
@@ -220,4 +216,65 @@ public class BinaryTree {
 		return root;
 	}
 
+	public int sumOfAllElements() {
+		return sumOfAllElements(root);
+	}
+
+	private int sumOfAllElements(BTreeNode root) {
+		if (root == null) {
+			return 0;
+		} else {
+			return (root.getData() + sumOfAllElements(root.getLeft()) + sumOfAllElements(root.getRight()));
+		}
+
+	}
+
+	public int maxElement() {
+		return maxElement(root);
+	}
+
+	private int maxElement(BTreeNode root) {
+		int left, right, root_value, max;
+		if (root == null) {
+			return 0;
+		} else {
+			left = maxElement(root.getLeft());
+			right = maxElement(root.getRight());
+			root_value = root.getData();
+			max = Math.max(left, right);
+			max = Math.max(root_value, max);
+			return max;
+		}
+	}
+
+	public int minElement() {
+		return minElement(root);
+	}
+
+	private int minElement(BTreeNode root) {
+		int left, right, min, root_value;
+		if (root == null) {
+			return 0;
+		} else {
+			left = minElement(root.getLeft());
+			right = minElement(root.getRight());
+			root_value = root.getData();
+			min = Math.min(right, left);
+			min = Math.min(root_value, min);
+			return min;
+		}
+	}
+
+	public int maxSecondElement() {
+		return maxSecondElement(root);
+	}
+
+	private int maxSecondElement(BTreeNode root) {
+		if (root == null) {
+			return 0;
+		} else {
+
+		}
+		return 0;
+	}
 }
