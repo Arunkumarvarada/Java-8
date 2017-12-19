@@ -1,6 +1,6 @@
 package com.java4u.cloning.deepcloning;
 
-public class Course {
+public class Course implements Cloneable {
 	private String subject1;
 	private String subject2;
 	private String subject3;
