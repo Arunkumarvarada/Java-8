@@ -1,4 +1,4 @@
-package com.java4u.ds.arrays;
+package com.java4u.ds.arrays.frequencyNumbers;
 
 import java.util.HashMap;
 import java.util.Iterator;

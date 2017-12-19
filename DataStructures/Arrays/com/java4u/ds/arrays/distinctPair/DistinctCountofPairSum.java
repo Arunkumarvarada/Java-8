@@ -1,4 +1,4 @@
-package com.java4u.ds.arrays;
+package com.java4u.ds.arrays.distinctPair;
 
 import java.util.HashMap;
 import java.util.Map;

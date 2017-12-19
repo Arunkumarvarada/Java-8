@@ -1,4 +1,4 @@
-package com.java4u.ds.arrays;
+package com.java4u.ds.arrays.missingNumber;
 
 import java.util.Arrays;
 import java.util.BitSet;

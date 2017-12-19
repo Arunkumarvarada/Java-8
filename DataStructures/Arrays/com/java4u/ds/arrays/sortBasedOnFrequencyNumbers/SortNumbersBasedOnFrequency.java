@@ -1,4 +1,4 @@
-package com.java4u.ds.arrays;
+package com.java4u.ds.arrays.sortBasedOnFrequencyNumbers;
 
 import java.util.ArrayList;
 import java.util.Collections;
