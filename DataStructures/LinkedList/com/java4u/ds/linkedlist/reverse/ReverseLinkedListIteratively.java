@@ -2,8 +2,7 @@ package com.java4u.ds.linkedlist.reverse;
 
 import com.java4u.ds.linkedlist.Node;
 
-public class ReverseLinkedList {
-
+public class ReverseLinkedListIteratively {
 	private Node head;
 
 	public Node getHead() {
@@ -14,35 +13,30 @@ public class ReverseLinkedList {
 		this.head = head;
 	}
 
-	public void reverseLinkedListRecursive() {
-		reverseLinkedListRecursive(head);
-	}
+	public void reverseLinkedListIterative() {
+		Node prev = null;
+		Node current = null;
+		Node next = head;
 
-	public void reverseLinkedListRecursive(Node current) {
-
-		if (current == null) {
-			return;
+		while (next != null) {
+			current = next;
+			next = current.getNext();
+			current.setNext(prev);
+			prev = current;
 		}
-		if (current.getNext() == null) {
-			this.head = current;
-			return;
-		}
-		reverseLinkedListRecursive(current.getNext());
-		current.getNext().setNext(current);
-		current.setNext(null);
-
+		head = current;
 	}
 
 	public static void main(String[] args) {
-		ReverseLinkedList list = new ReverseLinkedList();
+		ReverseLinkedListIteratively list = new ReverseLinkedListIteratively();
 		list.createTestList(5);
 		list.printlist();
-		list.reverseLinkedListRecursive();
+		list.reverseLinkedListIterative();
 		list.printlist();
 
 	}
 
-	public void printlist() {
+	private void printlist() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.getData() + " -> ");
@@ -52,7 +46,7 @@ public class ReverseLinkedList {
 
 	}
 
-	public void createTestList(int n) {
+	private void createTestList(int n) {
 		if (n < 1)
 			return;
 		int i = 1;
