@@ -1,8 +1,9 @@
-package com.java4u.ds.linkedlist.reverse;
+package com.java4u.ds.linkedlist.reverselist;
 
 import com.java4u.ds.linkedlist.Node;
 
-public class ReverseLinkedListIteratively {
+public class ReverseLinkedList {
+
 	private Node head;
 
 	public Node getHead() {
@@ -13,30 +14,35 @@ public class ReverseLinkedListIteratively {
 		this.head = head;
 	}
 
-	public void reverseLinkedListIterative() {
-		Node prev = null;
-		Node current = null;
-		Node next = head;
+	public void reverseLinkedListRecursive() {
+		reverseLinkedListRecursive(head);
+	}
 
-		while (next != null) {
-			current = next;
-			next = current.getNext();
-			current.setNext(prev);
-			prev = current;
+	public void reverseLinkedListRecursive(Node current) {
+
+		if (current == null) {
+			return;
 		}
-		head = current;
+		if (current.getNext() == null) {
+			this.head = current;
+			return;
+		}
+		reverseLinkedListRecursive(current.getNext());
+		current.getNext().setNext(current);
+		current.setNext(null);
+
 	}
 
 	public static void main(String[] args) {
-		ReverseLinkedListIteratively list = new ReverseLinkedListIteratively();
+		ReverseLinkedList list = new ReverseLinkedList();
 		list.createTestList(5);
 		list.printlist();
-		list.reverseLinkedListIterative();
+		list.reverseLinkedListRecursive();
 		list.printlist();
 
 	}
 
-	private void printlist() {
+	public void printlist() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.getData() + " -> ");
@@ -46,7 +52,7 @@ public class ReverseLinkedListIteratively {
 
 	}
 
-	private void createTestList(int n) {
+	public void createTestList(int n) {
 		if (n < 1)
 			return;
 		int i = 1;
