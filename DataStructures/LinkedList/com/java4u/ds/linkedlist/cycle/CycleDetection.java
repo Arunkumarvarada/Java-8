@@ -5,6 +5,14 @@ import com.java4u.ds.linkedlist.Node;
 public class CycleDetection {
 	private Node head = null;
 
+	public CycleDetection(Node head) {
+		this.head = head;
+	}
+
+	public CycleDetection() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean hasCycle(Node head) {
 		if (null == head) {
 			return false;
