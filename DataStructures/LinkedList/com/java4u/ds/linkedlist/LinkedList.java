@@ -70,16 +70,17 @@ public class LinkedList {
 		System.out.print(current.getData() + "-->");
 	}
 
-	// TODO: Need to be fixed
 	public void reverse() {
 		Node prev = null;
-		Node current = head;
-		while (current != null) {
-			Node temp = current.getNext();
-			prev = current;
-			current = temp;
+		Node current = null;
+		Node next = head;
+		while (next != null) {
+			current = next;
+			next = current.getNext();
+			current.setNext(prev);
+			prev=current;
 		}
-		head = prev;
+		head = current;
 	}
 
 	public Node getMiddle() {
@@ -252,20 +253,19 @@ public class LinkedList {
 
 	public Node insertWithReturn(int data) {
 		Node newNode = new Node(data);
-		if(null == head) {
+		if (null == head) {
 			head = newNode;
 			return head;
-			
-		}
-		else {
+
+		} else {
 			Node temp = head;
-			while(temp.getNext() != null) {
+			while (temp.getNext() != null) {
 				temp = temp.getNext();
 			}
-			
-			temp.setNext( newNode);
+
+			temp.setNext(newNode);
 			return newNode;
 		}
-		
+
 	}
 }
