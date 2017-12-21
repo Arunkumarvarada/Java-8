@@ -1,10 +1,10 @@
 package com.java4u.pattern.square;
 
-public class Pattern2 {
+public class Pattern6 {
 
-	public void printPattern2() {
-		for (int i = 1; i <= 5; i++) {
-			for (int j = 1; j <= 5; j++) {
+	public void printPattern6() {
+		for (int i = 5; i > 0; i--) {
+			for (int j = 5; j > 0; j--) {
 				System.out.print(i);
 			}
 			System.out.println();
@@ -12,7 +12,7 @@ public class Pattern2 {
 	}
 
 	public static void main(String[] args) {
-		new Pattern2().printPattern2();
+		new Pattern6().printPattern6();
 	}
 
 }

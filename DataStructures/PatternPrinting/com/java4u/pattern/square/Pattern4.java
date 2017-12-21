@@ -1,4 +1,4 @@
-package com.java4u.patternprint;
+package com.java4u.pattern.square;
 
 public class Pattern4 {
 
