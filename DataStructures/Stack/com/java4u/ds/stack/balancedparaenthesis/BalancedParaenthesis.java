@@ -3,30 +3,30 @@ package com.java4u.ds.stack.balancedparaenthesis;
 import java.util.Stack;
 
 public class BalancedParaenthesis {
-	@SuppressWarnings("unchecked")
+
 	public int isValid(String a) {
-		Stack st = new Stack();
+		Stack<Character> stack = new Stack<Character>();
 		char[] exp = a.toCharArray();
 
 		for (int i = 0; i < exp.length; i++) {
 
 			if (exp[i] == '{' || exp[i] == '(' || exp[i] == '[')
-				st.push(exp[i]);
+				stack.push(exp[i]);
 
 			if (exp[i] == '}' || exp[i] == ')' || exp[i] == ']') {
 
-				if (st.isEmpty()) {
+				if (stack.isEmpty()) {
 					return 0;
 				}
 
-				else if (!isMatchingPair((char) st.pop(), exp[i])) {
+				else if (!isMatchingPair((char) stack.pop(), exp[i])) {
 					return 0;
 				}
 			}
 
 		}
 
-		if (st.isEmpty())
+		if (stack.isEmpty())
 			return 1;
 		else {
 			return 0;
