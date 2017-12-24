@@ -3,28 +3,27 @@ package com.java4u.ds.linkedlist.nthNode;
 import com.java4u.ds.linkedlist.Node;
 
 public class NthNodeFromLast {
-	public Node NthNodeFromEnd(Node head, int n) {
-		Node temp = head;
-		Node pthNode = null;
-		for (int i = 0; i < n; i++) {
-			if (temp != null) {
-				temp = temp.getNext();
-			}
-		}
-		while (temp != null) {
-			if (pthNode != null) {
-				pthNode = head;
-			} else {
-				pthNode = pthNode.getNext();
-			}
-			temp = temp.getNext();
+	public int NthNodeFromEnd(Node head, int nodeFromLast) {
+
+		if (nodeFromLast <= 0 || head == null) {
+			return -1;
 		}
 
-		if (pthNode != null) {
-			return pthNode;
-		} else {
-			return null;
+		Node ptrA = head, ptrB = head;
+
+		for (int i = 0; i < nodeFromLast; i++) {
+
+			if (ptrB == null) {
+				return -1;
+			}
+			ptrB = ptrB.getNext();
 		}
+		while (ptrB != null) {
+			ptrB = ptrB.getNext();
+			ptrA = ptrA.getNext();
+		}
+
+		return ptrA.getData();
 
 	}
 
@@ -42,10 +41,7 @@ public class NthNodeFromLast {
 		n2.setNext(n3);
 		n3.setNext(n4);
 		n4.setNext(n5);
-		Node node = list.NthNodeFromEnd(head, 2);
-		if (node != null) {
-			System.out.println(node.getData());
-		}
+		System.out.println(list.NthNodeFromEnd(head, 2));
 
 	}
 }
