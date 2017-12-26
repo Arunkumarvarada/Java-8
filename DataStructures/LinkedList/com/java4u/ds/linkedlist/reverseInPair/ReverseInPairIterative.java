@@ -2,17 +2,31 @@ package com.java4u.ds.linkedlist.reverseInPair;
 
 import com.java4u.ds.linkedlist.Node;
 
-public class ReverseInPairUsingRecursion {
+public class ReverseInPairIterative {
 
-	public Node reverseinPairRecursive(Node head) {
-		if (head == null || head.next == null) {
-			return head;
+	public Node reverseinPairIterative(Node node) {
+		if (node == null || node.next == null) {
+			return null;
 		}
-		Node remaing = head.next.next;
-		Node newhead = head.next;
-		head.next.next = head;
-		head.next = reverseinPairRecursive(remaing);
-		return newhead;
+		Node prev = node;
+		Node curr = node.next;
+
+		node = curr;
+
+		while (true) {
+			Node next = curr.next;
+			curr.next = prev;
+
+			if (next == null || next.next == null) {
+				prev.next = next;
+				break;
+			}
+
+			prev.next = next.next;
+			prev = next;
+			curr = prev.next;
+		}
+		return node;
 	}
 
 	public static void print(Node current) {
@@ -36,7 +50,7 @@ public class ReverseInPairUsingRecursion {
 		n3.setNext(n4);
 
 		print(head);
-		Node node = new ReverseInPairUsingRecursion().reverseinPairRecursive(head);
+		Node node = new ReverseInPairIterative().reverseinPairIterative(head);
 		print(node);
 	}
 
