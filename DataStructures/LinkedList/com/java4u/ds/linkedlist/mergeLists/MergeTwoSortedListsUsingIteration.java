@@ -2,23 +2,52 @@ package com.java4u.ds.linkedlist.mergeLists;
 
 import com.java4u.ds.linkedlist.Node;
 
-public class MergeTwoSortedLists {
+public class MergeTwoSortedListsUsingIteration {
 	public Node mergeTwoSortedlists(Node head1, Node head2) {
+		Node mergedNode;
+		Node headNode;
+		if (head1 == null && head2 == null) {
+			return null;
+		}
 		if (head1 == null) {
 			return head2;
 		}
 		if (head2 == null) {
 			return head1;
 		}
-		Node head = new Node(0);
-		if (head1.getData() <= head2.getData()) {
-			head = head1;
-			head.setNext(mergeTwoSortedlists(head1.getNext(), head2));
-		} else {
-			head = head2;
-			head.setNext(mergeTwoSortedlists(head2.getNext(), head1));
+		
+		if ( head1.getData() < head2.getData()) {
+		    mergedNode = head1;
+		    head1 = head1.getNext();
 		}
-		return head;
+		else {
+		    mergedNode = head2;
+		    head2 = head2.getNext();
+		}
+
+		headNode = mergedNode; 
+
+		while (head1 != null && head2 != null) {           
+
+		    if ( head1.getData() < head2.getData()) {               
+		        mergedNode.setNext(head1);
+		        head1 = head1.getNext();
+		    }
+		    else {
+		        mergedNode.setNext(head2);
+		        head2 = head2.getNext();                
+		    }       
+		    mergedNode = mergedNode.getNext();
+		}
+
+		if (head1 != null) {
+		    mergedNode.setNext(head1);
+		}
+
+		if (head2 != null) {
+		    mergedNode.setNext(head2);
+		}       
+		return headNode;
 	}
 
 	public static void print(Node current) {
@@ -36,7 +65,7 @@ public class MergeTwoSortedLists {
 		Node n2 = new Node(5);
 		Node n3 = new Node(7);
 		Node n4 = new Node(9);
-		
+
 		head1.setNext(n1);
 		n1.setNext(n2);
 		n2.setNext(n3);
@@ -48,15 +77,15 @@ public class MergeTwoSortedLists {
 		Node n6 = new Node(6);
 		Node n7 = new Node(8);
 		Node n8 = new Node(10);
-		
+
 		head2.setNext(n5);
 		n5.setNext(n6);
 		n6.setNext(n7);
 		n7.setNext(n8);
-		
+
 		print(head1);
 		print(head2);
-		Node node = new MergeTwoSortedLists().mergeTwoSortedlists(head1, head2);
+		Node node = new MergeTwoSortedListsUsingIteration().mergeTwoSortedlists(head1, head2);
 		print(node);
 
 	}
