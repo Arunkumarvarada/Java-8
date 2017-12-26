@@ -1,8 +1,8 @@
 package com.java4u.ds.linkedlist;
 
 public class Node {
-	private int data;
-	private Node next;
+	public int data;
+	public Node next;
 
 	public Node(int data) {
 		this.data = data;
